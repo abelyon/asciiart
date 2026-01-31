@@ -36,7 +36,7 @@ const UpdateSection = ({ title, children, defaultOpen = false }: UpdateSectionPr
 export const Updates = () => {
   return (
     <div className="space-y-3 sm:space-y-4">
-      <UpdateSection title="Version 1.0.1 - Documentation Page" defaultOpen={true}>
+      <UpdateSection title="Version 1.0.1 - Documentation Page">
         <div className="space-y-4">
           <div>
             <p className="text-green-400 font-semibold mb-2">ADDED</p>
