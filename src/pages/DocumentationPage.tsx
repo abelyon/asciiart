@@ -1,6 +1,5 @@
 import { Layout } from '../components/Layout';
 import { Documentation } from '../components/Documentation';
-import { Updates } from '../components/Updates';
 import logo from '../assets/logo.svg';
 
 export const DocumentationPage = () => {
@@ -13,12 +12,6 @@ export const DocumentationPage = () => {
           </h1>
         </div>
         <Documentation />
-        <div className="mb-4 mt-5 sm:mb-6">
-          <h1 className="text-green-400 text-base sm:text-lg md:text-xl font-bold" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
-            [UPDATES]
-          </h1>
-        </div>
-        <Updates />
         <div className="pt-6">
           <div className="flex items-center justify-center">
             <a
