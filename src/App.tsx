@@ -28,7 +28,7 @@ const App = () => {
     <Layout>
       <div className="min-h-screen flex flex-col">
         {/* Output at the top - fixed */}
-        <div className="w-full border-gray-800" style={{ padding: 'clamp(0.75rem, 3vw, 1.5rem)' }}>
+        <div className="w-full border-gray-800 mt-5" style={{ padding: 'clamp(0.75rem, 3vw, 1.5rem)' }}>
         <div className="max-w-full mx-auto px-2 sm:px-4 md:px-6">
           <AsciiArtDisplay ref={asciiArtRef} asciiArt={asciiArt} isTitle={true} isCentered={!text.trim()} />
         </div>
@@ -40,10 +40,10 @@ const App = () => {
       {/* Input section - sticky at bottom */}
       <div className="sticky bottom-0 border-gray-800">
         {/* Toggle button */}
-        <div className="w-full flex justify-end px-4 py-4 border-b-2 border-gray-800">
+        <div className="w-full flex justify-end px-3 py-2 border-b-2 border-gray-800">
           <button
             onClick={() => setIsInputSectionOpen(!isInputSectionOpen)}
-            className="px-4 py-2 bg-black border-2 border-gray-600 hover:border-green-500 hover:bg-gray-900 text-green-400 text-sm sm:text-base transition-all"
+            className="px-3 py-1.5 bg-black border-2 border-gray-600 hover:border-green-500 hover:bg-gray-900 text-green-400 text-xs sm:text-sm transition-all"
             style={{ fontFamily: 'var(--font-space-mono)' }}
           >
             [{isInputSectionOpen ? '+' : '-'}]
@@ -52,8 +52,8 @@ const App = () => {
         
         {/* Input content */}
         {isInputSectionOpen && (
-          <div className="p-4 sm:p-6 bg-gray-950">
-            <div className="max-w-4xl mx-auto space-y-3 sm:space-y-4">
+          <div className="p-3 sm:p-4 bg-gray-950">
+            <div className="max-w-4xl mx-auto space-y-2 sm:space-y-3">
               <TextInput 
                 text={text} 
                 onTextChange={setText}
@@ -77,7 +77,7 @@ const App = () => {
                 imageBgEnabled={imageBgEnabled}
                 imageBgColor={imageBgColor}
               />
-              <div className="text-gray-600 text-xs sm:text-sm text-center px-4 pt-2" style={{ fontFamily: 'var(--font-space-mono)' }}>
+              <div className="text-gray-600 text-xs text-center px-2 pt-1" style={{ fontFamily: 'var(--font-space-mono)' }}>
                 <p>&gt; Supported characters: 0-9, A-Z, space, !, ., and ?</p>
               </div>
             </div>

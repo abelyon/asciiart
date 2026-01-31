@@ -28,7 +28,7 @@ export const CharacterInput = ({
   return (
     <div className="border-2 border-gray-600 bg-gray-950 self-start group hover:bg-gray-900 transition-colors">
       <div
-        className="w-full px-3 sm:px-4 py-2 flex items-center justify-between"
+        className="w-full px-2 sm:px-3 py-1.5 flex items-center justify-between"
       >
         <div className="flex items-center gap-2">
           <span className="text-xs sm:text-sm text-gray-400" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
@@ -37,7 +37,7 @@ export const CharacterInput = ({
           {info && (
             <div className="relative info-group">
               <span className="text-green-400 text-xs cursor-help hover:text-green-300 transition-colors align-middle">[?]</span>
-              <div className="info-tooltip absolute left-0 transform -translate-x-1/2 bottom-full mb-2 hidden z-50 w-[280px] max-w-[calc(100vw-1rem)] p-2 sm:p-3 bg-black border-2 border-green-500 text-green-400 text-[10px] sm:text-xs whitespace-normal shadow-lg" style={{ fontFamily: 'var(--font-space-mono)' }}>
+              <div className="info-tooltip absolute left-2 transform -translate-x-1/2 bottom-full mb-2 hidden z-50 w-[280px] max-w-[calc(100vw-1rem)] p-2 sm:p-3 bg-black border-2 border-green-500 text-green-400 text-[10px] sm:text-xs whitespace-normal shadow-lg" style={{ fontFamily: 'var(--font-space-mono)' }}>
                 {info}
               </div>
             </div>
@@ -48,7 +48,7 @@ export const CharacterInput = ({
         </span>
       </div>
       {isOpen && (
-        <div className="p-3 sm:p-4 pt-0">
+        <div className="p-2 sm:p-3 pt-0">
           <input
             type="text"
             value={value === ' ' ? ' ' : value}
@@ -83,15 +83,15 @@ export const CharacterInput = ({
               }
             }}
             placeholder={placeholder}
-            className="w-full px-3 sm:px-4 py-2 bg-black border-2 border-gray-700 text-green-400 text-base sm:text-lg focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500/20"
+            className="w-full px-2 sm:px-3 py-1.5 bg-black border-2 border-gray-700 text-green-400 text-sm sm:text-base focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500/20"
             style={{ fontFamily: 'var(--font-space-mono)' }}
           />
-          <div className="flex flex-wrap gap-2 mt-2">
+          <div className="flex flex-wrap gap-1.5 mt-1.5">
             {presets.map((preset) => (
               <button
                 key={preset.value}
                 onClick={() => onChange(preset.value)}
-                className="px-2 py-1 text-xs bg-gray-900 border border-gray-700 hover:bg-gray-800 hover:border-gray-600 transition-colors"
+                className="px-1.5 py-0.5 text-xs bg-gray-900 border border-gray-700 hover:bg-gray-800 hover:border-gray-600 transition-colors"
                 style={{ fontFamily: 'var(--font-space-mono)' }}
               >
                 {preset.label}

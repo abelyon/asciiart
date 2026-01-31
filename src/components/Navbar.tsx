@@ -10,10 +10,10 @@ export const Navbar = forwardRef<HTMLElement>((props, ref) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
         <Link
           to="/"
-          className="text-green-400 text-sm sm:text-base hover:text-green-300 transition-colors"
+          className="text-green-400 text-sm sm:text-base font-bold hover:text-green-300 transition-colors"
           style={{ fontFamily: 'var(--font-space-grotesk)' }}
         >
-          [ASCII ART GENERATOR]
+          [ASCII ART]
         </Link>
         <div className="flex items-center gap-3 sm:gap-4">
           <Link
