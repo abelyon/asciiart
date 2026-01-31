@@ -121,6 +121,12 @@ Visit `/doc` route in the application for comprehensive documentation of all fea
 
 See [CHANGELOG.md](./CHANGELOG.md) for a detailed list of changes and updates.
 
+## Author
+
+**Your Name**
+- GitHub: [@abelyon](https://github.com/abelyon)
+- Email: your.email@example.com
+
 ## License
 
 [Add your license here]

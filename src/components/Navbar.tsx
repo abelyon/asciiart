@@ -6,7 +6,7 @@ export const Navbar = forwardRef<HTMLElement>((props, ref) => {
   const isDocPage = location.pathname === '/doc';
 
   return (
-    <nav ref={ref} className="fixed top-0 left-0 right-0 w-full border-b-2 border-gray-800 bg-gray-950 z-50">
+    <nav ref={ref} className="fixed top-0 left-0 right-0 w-full border-b-2 border-gray-800 bg-gray-950 z-50" style={{ backgroundColor: '#030712' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
         <Link
           to="/"

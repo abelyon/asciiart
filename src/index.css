@@ -40,3 +40,10 @@
 .info-group:hover .info-tooltip {
   display: block;
 }
+
+/* Ensure body and html have dark background to prevent white flash on mobile */
+body, html {
+  background-color: #030712;
+  margin: 0;
+  padding: 0;
+}
