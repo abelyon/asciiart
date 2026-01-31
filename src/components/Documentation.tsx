@@ -160,7 +160,8 @@ export const Documentation = () => {
               <div>
                 <p className="text-green-400 font-semibold">COLLAPSIBLE SECTIONS</p>
                 <p className="ml-4">
-                  All input sections can be collapsed/expanded. Click the header or [+]/[-] button to toggle.
+                  All input sections can be collapsed/expanded. Click the header or [+]/[-] button to toggle. 
+                  Sections are designed to be compact and space-efficient for maximum preview visibility.
                 </p>
               </div>
 
@@ -181,7 +182,8 @@ export const Documentation = () => {
               <div>
                 <p className="text-green-400 font-semibold">INPUT SECTION TOGGLE</p>
                 <p className="ml-4">
-                  Use the [+]/[-] button at the bottom to collapse/expand the entire input section.
+                  Double-click anywhere on the page (except inside the input section) to toggle the input section visibility. 
+                  The instruction text at the bottom shows the current action.
                 </p>
               </div>
             </div>

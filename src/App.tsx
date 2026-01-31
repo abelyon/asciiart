@@ -24,11 +24,20 @@ const App = () => {
     setAsciiArt(result);
   }, [text, slashChar, equalsChar, voidChar]);
 
+  const handleDoubleClick = (e: React.MouseEvent) => {
+    // Don't toggle if clicking inside the input section
+    const target = e.target as HTMLElement;
+    const inputSection = target.closest('.input-section');
+    if (!inputSection) {
+      setIsInputSectionOpen(!isInputSectionOpen);
+    }
+  };
+
   return (
     <Layout>
-      <div className="min-h-screen flex flex-col">
+      <div className="min-h-screen flex flex-col" onDoubleClick={handleDoubleClick}>
         {/* Output at the top - fixed */}
-        <div className="w-full border-gray-800 mt-5" style={{ padding: 'clamp(0.75rem, 3vw, 1.5rem)' }}>
+        <div className="w-full border-gray-800" style={{ padding: 'clamp(0.75rem, 3vw, 1.5rem)' }}>
         <div className="max-w-full mx-auto px-2 sm:px-4 md:px-6">
           <AsciiArtDisplay ref={asciiArtRef} asciiArt={asciiArt} isTitle={true} isCentered={!text.trim()} />
         </div>
@@ -38,16 +47,12 @@ const App = () => {
       <div className="flex-1"></div>
 
       {/* Input section - sticky at bottom */}
-      <div className="sticky bottom-0 border-gray-800">
-        {/* Toggle button */}
-        <div className="w-full flex justify-end px-3 py-2 border-b-2 border-gray-800">
-          <button
-            onClick={() => setIsInputSectionOpen(!isInputSectionOpen)}
-            className="px-3 py-1.5 bg-black border-2 border-gray-600 hover:border-green-500 hover:bg-gray-900 text-green-400 text-xs sm:text-sm transition-all"
-            style={{ fontFamily: 'var(--font-space-mono)' }}
-          >
-            [{isInputSectionOpen ? '+' : '-'}]
-          </button>
+      <div className="sticky bottom-0 border-gray-800 input-section">
+        {/* Instruction text */}
+        <div className="w-full flex justify-center px-3 py-2 border-b-2 border-gray-800">
+          <p className="text-gray-500 text-xs text-center" style={{ fontFamily: 'var(--font-space-mono)' }}>
+            Double click anywhere to {isInputSectionOpen ? 'hide' : 'show'} input section
+          </p>
         </div>
         
         {/* Input content */}

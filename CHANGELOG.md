@@ -1,78 +1,105 @@
-# Changelog
+## Documentation
 
-All notable changes to the ASCII Art Generator will be documented in this file.
+### Overview
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+ASCII Art Generator converts text into blocky, retro-style ASCII art characters. You can customize the characters used, export as text or images, and use various advanced features for creative ASCII art generation.
 
-## [Unreleased]
+### Text Input
 
-### Added
-- Documentation page at `/doc` route with comprehensive feature explanations
-- Navbar with fixed positioning and navigation between Home and Documentation
-- Layout component for consistent page structure and navbar spacing
-- Space Grotesk font for titles and Space Mono font for body text throughout the app
-- Collapsible documentation sections with smooth scroll-to-view functionality
-- Responsive design improvements for mobile, tablet, and desktop
+**Enter Text (Multi-line supported)**
 
-### Changed
-- Refactored documentation component to match app's terminal aesthetic
-- Updated typography system to use Space Grotesk (titles) and Space Mono (text)
-- Improved navbar spacing and fixed positioning to prevent content overlap
-- Enhanced documentation sections with consistent styling and collapsible behavior
-
-### Fixed
-- Navbar now properly calculates height dynamically to prevent content hiding
-- Documentation sections properly styled to match the rest of the application
-
-## [1.0.0] - Initial Release
-
-### Features
-- Text to ASCII art conversion with customizable characters
-- Multi-line text input support
-- Character customization (Slash, Equals, Void characters)
-- Advanced features:
-  - Multiple character randomization (e.g., `&@#`)
-  - !ALPHA mode for letter-specific ASCII art
-  - Automatic whitespace removal
-- Copy options:
-  - Plain text copy
-  - Copy for chat apps (Discord, Slack, etc.) with code blocks
-  - Download as high-resolution PNG image
-- Image export settings:
-  - Background toggle (transparent or colored)
-  - Custom background color picker
-- UI features:
-  - Collapsible input sections
-  - Info tooltips with hover functionality
-  - Toast notifications with sound effects
-  - Responsive design for all screen sizes
-  - Input section toggle button
+- Enter the text you want to convert to ASCII art
+- Press Enter for a new line (supports multi-line input)
 - Supported characters: 0-9, A-Z, space, !, ., ?, :, _, -, [, ], >, <, /, =, +
+- Empty input shows default "ASCII ART" example
 
----
+### Character Inputs
 
-## How to Update This Changelog
+**Slash Character (/)**
 
-When making changes:
+- Replaces all '/' characters in the ASCII patterns.
+- Presets: /, ALPHA, |, #, *, &@#
 
-1. **Added**: New features
-2. **Changed**: Changes in existing functionality
-3. **Deprecated**: Soon-to-be removed features
-4. **Removed**: Removed features
-5. **Fixed**: Bug fixes
-6. **Security**: Security fixes
+**Equals Character (=)**
 
-### Example Entry:
-```markdown
-## [1.1.0] - 2024-01-15
+- Replaces all '=' characters in the ASCII patterns.
+- Presets: =, Space, -, _, #
 
-### Added
-- New feature description
+**Void Character (spaces)**
 
-### Changed
-- Improvement description
+- Replaces all space characters (background/void areas).
+- Presets: Space, ., ·, _, *
 
-### Fixed
-- Bug fix description
-```
+### Advanced Features
+
+**Multiple Characters (Randomization)**
+
+- Enter multiple characters like "&@#" to randomly select from them for each position. This creates varied, randomized ASCII art patterns.
+- Example: Set Slash Character to "&@#" for random selection
+
+**!ALPHA Mode**
+
+- Set any character input to "!ALPHA" to use the input letter itself. Each letter in your text will be built using its own character.
+- Example: Input "HELLO" with !ALPHA → H uses 'H', E uses 'E', etc.
+
+**Whitespace Removal**
+
+- All whitespaces are automatically removed from character inputs. Type " &@ #" and it becomes "&@#" automatically.
+
+### Copy Options
+
+**COPY**
+
+- Copies the ASCII art as plain text to clipboard.
+
+**COPY FOR CHAT**
+
+- Copies the ASCII art wrapped in code blocks (```) for Discord and other chat apps. Preserves formatting and spacing.
+
+**DOWNLOAD AS IMAGE**
+
+- Exports the ASCII art as a high-resolution PNG image (6x scale). Works on desktop and mobile devices.
+- Desktop: Copies to clipboard if supported, otherwise downloads
+- Mobile: Downloads the image (check downloads folder)
+
+### Image Settings
+
+**Background Toggle**
+
+- Enable/disable background for exported images. When disabled, images have transparent background.
+
+**Background Color**
+
+- Customize the background color using the color picker or enter a hex code. Defaults to gray-950 (#030712) when enabled.
+
+### UI Features
+
+**Collapsible Sections**
+
+- All input sections can be collapsed/expanded. Click the header or [+]/[-] button to toggle.
+
+**Info Tooltips**
+
+- Hover over [?] icons to see detailed information about each feature.
+
+**Responsive Design**
+
+- Fully responsive layout that adapts to mobile, tablet, and desktop screens.
+
+**Input Section Toggle**
+
+- Use the [+]/[-] button at the bottom to collapse/expand the entire input section.
+
+### Tips & Tricks
+
+- Use "&@#" for randomized patterns - each position randomly picks from the set
+- Use "!ALPHA" to make each letter use itself (great for colorful text)
+- Combine features: Use !ALPHA for slash and &@# for equals for unique effects
+- Multi-line input: Press Enter to create line breaks in your ASCII art
+- Image export: Disable background for transparent images perfect for overlays
+- Mobile: Images download automatically - check your downloads folder
+- Chat apps: Use "Copy for Chat" for best formatting in Discord, Slack, etc.
+
+### Supported Characters
+
+Digits: 0-9 | Letters: A-Z | Special: space, !, ., ?, :, _, -, [, ], >, <, /, =, +
