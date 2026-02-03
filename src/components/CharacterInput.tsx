@@ -66,10 +66,13 @@ export const CharacterInput = ({
               if (!isOpen) {
                 setIsOpen(true);
               }
-              // Scroll input into view when keyboard appears on mobile/tablet
-              setTimeout(() => {
-                e.target.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
-              }, 300);
+              // Scroll input into view when keyboard appears on mobile/tablet only
+              const isMobile = window.matchMedia('(max-width: 768px)').matches || 'ontouchstart' in window;
+              if (isMobile) {
+                setTimeout(() => {
+                  e.target.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                }, 300);
+              }
             }}
             onBlur={(e) => {
               let val = e.target.value;

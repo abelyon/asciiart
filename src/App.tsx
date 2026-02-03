@@ -50,8 +50,8 @@ const App = () => {
       <div className="sticky bottom-0 border-gray-800 input-section">
         {/* Instruction text */}
         <div className="w-full flex justify-center px-3 py-2 border-b-2 border-gray-800">
-          <p className="text-gray-500 text-xs text-center" style={{ fontFamily: 'var(--font-space-mono)' }}>
-            Double click anywhere to {isInputSectionOpen ? 'hide' : 'show'} input section
+          <p className="text-gray-6 text-gray-600 text-xs text-center" style={{ fontFamily: 'var(--font-space-mono)' }}>
+           &gt; Double click anywhere to {isInputSectionOpen ? 'hide' : 'show'} input section
           </p>
         </div>
         
@@ -62,7 +62,7 @@ const App = () => {
               <TextInput 
                 text={text} 
                 onTextChange={setText}
-                info="Enter the text you want to convert to ASCII art. Supports multiple lines - press Enter for a new line. Supported characters: 0-9, A-Z, space, !, ., and ?"
+                info="Enter the text you want to convert to ASCII art. Supports multiple lines - press Enter for a new line. Supported characters: 0-9, A-Z, space, !, ., ,, ?, :, _, -, [, ], {, }, /, =, +, #, &lt;, &gt;. Unsupported characters will be replaced with spaces and a warning will appear when copying."
               />
               <CharacterInputs
                 slashChar={slashChar}
@@ -81,9 +81,10 @@ const App = () => {
                 asciiArtRef={asciiArtRef}
                 imageBgEnabled={imageBgEnabled}
                 imageBgColor={imageBgColor}
+                text={text}
               />
               <div className="text-gray-600 text-xs text-center px-2 pt-1" style={{ fontFamily: 'var(--font-space-mono)' }}>
-                <p>&gt; Supported characters: 0-9, A-Z, space, !, ., and ?</p>
+                <p>&gt; Supported characters: 0-9, A-Z, space, !, ., comma, ?, :, _, -, [, ], {'{'}, {'}'}, /, =, +, #, &lt;, &gt;</p>
               </div>
             </div>
           </div>

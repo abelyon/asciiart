@@ -1,25 +1,28 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import type { ReactNode } from 'react';
 
 interface DocSectionProps {
   title: string;
   children: ReactNode;
   defaultOpen?: boolean;
+  id?: string;
 }
 
-const DocSection = ({ title, children, defaultOpen = false }: DocSectionProps) => {
+const DocSection = ({ title, children, defaultOpen = false, id }: DocSectionProps) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="border-2 border-gray-600 bg-gray-950 hover:bg-gray-900 transition-colors">
+    <div ref={sectionRef} id={id} className="border-2 border-gray-600 bg-gray-950 hover:bg-gray-900 transition-colors">
       <div
         className="w-full px-3 sm:px-4 py-2 flex items-center justify-between cursor-pointer"
         style={{ fontFamily: 'var(--font-space-grotesk)' }}
+        onClick={() => setIsOpen(!isOpen)}
       >
         <span className="text-xs sm:text-sm text-gray-400">
           &gt; {title}
         </span>
-        <span className="text-green-400 text-xs" onClick={() => setIsOpen(!isOpen)}>
+        <span className="text-green-400 text-xs">
           [{isOpen ? '-' : '+'}]
         </span>
       </div>
@@ -31,6 +34,7 @@ const DocSection = ({ title, children, defaultOpen = false }: DocSectionProps) =
     </div>
   );
 };
+
 
 export const Documentation = () => {
   return (
@@ -48,7 +52,7 @@ export const Documentation = () => {
             <ul className="list-none space-y-1 ml-4">
               <li>• Enter the text you want to convert to ASCII art</li>
               <li>• Press Enter for a new line (supports multi-line input)</li>
-              <li>• Supported characters: 0-9, A-Z, space, !, ., ?, :, _, -, [, ], &gt;, &lt;, /, =, +</li>
+              <li>• Supported characters: 0-9, A-Z, space, !, ., comma, ?, :, _, -, [, ], {'{'}, {'}'}, /, =, +, #, &lt;, &gt;</li>
               <li>• Empty input shows default "ASCII ART" example</li>
             </ul>
           </DocSection>
@@ -105,7 +109,7 @@ export const Documentation = () => {
             </div>
           </DocSection>
 
-          <DocSection title="Copy Options" defaultOpen={true}>
+          <DocSection title="Copy Options" defaultOpen={true} id="copy-options">
             <div className="space-y-2">
               <div>
                 <p className="text-green-400 font-semibold">COPY</p>
@@ -133,6 +137,15 @@ export const Documentation = () => {
                   • Mobile: Downloads the image (check downloads folder)
                 </p>
               </div>
+
+              <div>
+                <p className="text-green-400 font-semibold">WARNING SYSTEM</p>
+                <p className="ml-4">
+                  When copying with unsupported characters in your input, a warning toast will appear 
+                  listing which characters are not supported. The copy operation still proceeds, but 
+                  unsupported characters are replaced with spaces in the ASCII art.
+                </p>
+              </div>
             </div>
           </DocSection>
 
@@ -155,7 +168,7 @@ export const Documentation = () => {
             </div>
           </DocSection>
 
-          <DocSection title="UI Features" defaultOpen={true}>
+          <DocSection title="UI Features" defaultOpen={true} id="ui-features">
             <div className="space-y-2">
               <div>
                 <p className="text-green-400 font-semibold">COLLAPSIBLE SECTIONS</p>
@@ -173,6 +186,23 @@ export const Documentation = () => {
               </div>
 
               <div>
+                <p className="text-green-400 font-semibold">TOAST NOTIFICATIONS</p>
+                <p className="ml-4">
+                  Stackable toast notifications appear in the top-right corner for success, warning, and error messages. 
+                  They include sound effects and auto-dismiss after 4 seconds.
+                </p>
+              </div>
+
+              <div>
+                <p className="text-green-400 font-semibold">UPDATES SECTION</p>
+                <p className="ml-4">
+                  The Updates section at the top of the documentation page lists the latest features and changes. 
+                  Each update is displayed as a collapsible section with a description and a link to navigate to the 
+                  relevant documentation section.
+                </p>
+              </div>
+
+              <div>
                 <p className="text-green-400 font-semibold">RESPONSIVE DESIGN</p>
                 <p className="ml-4">
                   Fully responsive layout that adapts to mobile, tablet, and desktop screens.
@@ -184,6 +214,13 @@ export const Documentation = () => {
                 <p className="ml-4">
                   Double-click anywhere on the page (except inside the input section) to toggle the input section visibility. 
                   The instruction text at the bottom shows the current action.
+                </p>
+              </div>
+
+              <div>
+                <p className="text-green-400 font-semibold">SCROLL INDICATORS</p>
+                <p className="ml-4">
+                  Green gradient shadows appear on the sides of the ASCII art display when content is horizontally scrollable.
                 </p>
               </div>
             </div>
@@ -201,9 +238,12 @@ export const Documentation = () => {
             </ul>
           </DocSection>
 
-          <DocSection title="Supported Characters" defaultOpen={true}>
+          <DocSection title="Supported Characters" defaultOpen={true} id="supported-characters">
             <p className="ml-4">
-              Digits: 0-9 | Letters: A-Z | Special: space, !, ., ?, :, _, -, [, ], &gt;, &lt;, /, =, +
+              Digits: 0-9 | Letters: A-Z | Special: space, !, ., comma, ?, :, _, -, [, ], {'{'}, {'}'}, /, =, +, #, &lt;, &gt;
+            </p>
+            <p className="ml-4 mt-2 text-gray-500">
+              Note: Unsupported characters will be replaced with spaces. A warning toast will appear when copying with unsupported characters.
             </p>
           </DocSection>
     </div>

@@ -13,7 +13,7 @@ const getAudioContext = (): AudioContext | null => {
   return audioContext;
 };
 
-export const playSound = (type: 'success' | 'error' = 'success') => {
+export const playSound = (type: 'success' | 'error' | 'warning' = 'success') => {
   const ctx = getAudioContext();
   if (!ctx) return;
 
@@ -31,11 +31,15 @@ export const playSound = (type: 'success' | 'error' = 'success') => {
     oscillator.connect(gainNode);
     gainNode.connect(ctx.destination);
 
-    // Different frequencies for success vs error
+    // Different frequencies for success, warning, and error
     if (type === 'success') {
       // Pleasant ascending tone for success
       oscillator.frequency.setValueAtTime(400, ctx.currentTime);
       oscillator.frequency.exponentialRampToValueAtTime(250, ctx.currentTime + 0.1);
+    } else if (type === 'warning') {
+      // Medium tone for warning
+      oscillator.frequency.setValueAtTime(350, ctx.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(280, ctx.currentTime + 0.1);
     } else {
       // Lower, more urgent tone for error
       oscillator.frequency.setValueAtTime(300, ctx.currentTime);

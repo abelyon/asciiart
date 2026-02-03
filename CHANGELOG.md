@@ -10,7 +10,7 @@ ASCII Art Generator converts text into blocky, retro-style ASCII art characters.
 
 - Enter the text you want to convert to ASCII art
 - Press Enter for a new line (supports multi-line input)
-- Supported characters: 0-9, A-Z, space, !, ., ?, :, _, -, [, ], >, <, /, =, +
+- Supported characters: 0-9, A-Z, space, !, ., ,, ?, :, _, -, [, ], {, }, /, =, +, #, <, >
 - Empty input shows default "ASCII ART" example
 
 ### Character Inputs
@@ -62,6 +62,10 @@ ASCII Art Generator converts text into blocky, retro-style ASCII art characters.
 - Desktop: Copies to clipboard if supported, otherwise downloads
 - Mobile: Downloads the image (check downloads folder)
 
+**WARNING SYSTEM**
+
+- When copying with unsupported characters in your input, a warning toast will appear listing which characters are not supported. The copy operation still proceeds, but unsupported characters are replaced with spaces in the ASCII art.
+
 ### Image Settings
 
 **Background Toggle**
@@ -76,11 +80,15 @@ ASCII Art Generator converts text into blocky, retro-style ASCII art characters.
 
 **Collapsible Sections**
 
-- All input sections can be collapsed/expanded. Click the header or [+]/[-] button to toggle.
+- All input sections can be collapsed/expanded. Click the header or [+]/[-] button to toggle. Sections are designed to be compact and space-efficient for maximum preview visibility.
 
 **Info Tooltips**
 
 - Hover over [?] icons to see detailed information about each feature.
+
+**Toast Notifications**
+
+- Stackable toast notifications appear in the top-right corner for success, warning, and error messages. They include sound effects and auto-dismiss after 4 seconds.
 
 **Responsive Design**
 
@@ -88,7 +96,15 @@ ASCII Art Generator converts text into blocky, retro-style ASCII art characters.
 
 **Input Section Toggle**
 
-- Use the [+]/[-] button at the bottom to collapse/expand the entire input section.
+- Double-click anywhere on the page (except inside the input section) to toggle the input section visibility. The instruction text at the bottom shows the current action.
+
+**Updates Section**
+
+- The Updates section at the top of the documentation page lists the latest features and changes. Each update is displayed as a collapsible section with a description and a link to navigate to the relevant documentation section.
+
+**Scroll Indicators**
+
+- Green gradient shadows appear on the sides of the ASCII art display when content is horizontally scrollable.
 
 ### Tips & Tricks
 
@@ -102,4 +118,6 @@ ASCII Art Generator converts text into blocky, retro-style ASCII art characters.
 
 ### Supported Characters
 
-Digits: 0-9 | Letters: A-Z | Special: space, !, ., ?, :, _, -, [, ], >, <, /, =, +
+Digits: 0-9 | Letters: A-Z | Special: space, !, ., ,, ?, :, _, -, [, ], {, }, /, =, +, #, <, >
+
+Note: Unsupported characters will be replaced with spaces. A warning toast will appear when copying with unsupported characters.

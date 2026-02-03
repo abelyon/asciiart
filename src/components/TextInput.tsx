@@ -37,13 +37,10 @@ export const TextInput = ({ text, onTextChange, info }: TextInputProps) => {
             placeholder="Enter text (e.g., 'ASCII ART' or multiple lines)"
             value={text}
             onChange={(e) => onTextChange(e.target.value)}
-            onFocus={(e) => {
+            onFocus={() => {
               if (!isOpen) {
                 setIsOpen(true);
               }
-              setTimeout(() => {
-                e.target.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
-              }, 300);
             }}
             rows={3}
             className="w-full px-2 sm:px-3 py-1.5 sm:py-2 bg-black border-2 border-gray-700 text-green-400 text-sm sm:text-base focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500/20 resize-y"

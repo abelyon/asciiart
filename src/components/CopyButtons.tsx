@@ -1,15 +1,30 @@
 import { useToast } from '../hooks/useToast';
 import { ToastContainer } from './Toast';
+import { validateText } from '../utils/characterValidation';
 
 interface CopyButtonsProps {
   asciiArt: string[];
   asciiArtRef?: React.RefObject<HTMLPreElement | null>;
   imageBgEnabled: boolean;
   imageBgColor: string;
+  text: string;
 }
 
-export const CopyButtons = ({ asciiArt, asciiArtRef, imageBgEnabled, imageBgColor }: CopyButtonsProps) => {
+export const CopyButtons = ({ asciiArt, asciiArtRef, imageBgEnabled, imageBgColor, text }: CopyButtonsProps) => {
   const { toasts, showToast, hideToast } = useToast();
+
+  const checkAndWarnInvalidChars = (): boolean => {
+    const validation = validateText(text);
+    if (validation.hasInvalidChars) {
+      const invalidCharsStr = validation.invalidChars.join(', ');
+      showToast(
+        `Unsupported characters detected: ${invalidCharsStr}. These will be replaced with spaces.`,
+        'warning'
+      );
+      return true;
+    }
+    return false;
+  };
 
   const copyToClipboard = (text: string): Promise<void> => {
     // Try modern Clipboard API first (works best on desktop and modern mobile)
@@ -72,6 +87,7 @@ export const CopyButtons = ({ asciiArt, asciiArtRef, imageBgEnabled, imageBgColo
   };
 
   const handleCopy = () => {
+    checkAndWarnInvalidChars();
     const textToCopy = asciiArt.join('\n');
     copyToClipboard(textToCopy).then(() => {
       showToast('ASCII art copied to clipboard!', 'success');
@@ -81,6 +97,7 @@ export const CopyButtons = ({ asciiArt, asciiArtRef, imageBgEnabled, imageBgColo
   };
 
   const handleCopyDiscord = () => {
+    checkAndWarnInvalidChars();
     // For chat apps, use code block format to preserve spacing
     const textToCopy = '```\n' + asciiArt.join('\n') + '\n```';
     copyToClipboard(textToCopy).then(() => {
@@ -91,6 +108,7 @@ export const CopyButtons = ({ asciiArt, asciiArtRef, imageBgEnabled, imageBgColo
   };
 
   const handleCopyAsImage = async () => {
+    checkAndWarnInvalidChars();
     if (!asciiArtRef?.current) {
       showToast('Failed to copy image. Element not found.', 'error');
       return;
@@ -200,10 +218,6 @@ export const CopyButtons = ({ asciiArt, asciiArtRef, imageBgEnabled, imageBgColo
           link.href = url;
           const timestamp = new Date().getTime();
           link.download = `${timestamp}_ascii-art.png`;
-          //format timestamp to HHMMSS
-          const formattedTimestamp = new Date(timestamp).toISOString().replace('T', ' ').replace('Z', '').replace(':', '').replace('.', '').substring(11, 19);
-          link.download = `${formattedTimestamp}_ascii-art.png`;
-          // For mobile, try to open in a way that allows sharing
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);

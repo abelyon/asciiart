@@ -47,3 +47,40 @@ body, html {
   margin: 0;
   padding: 0;
 }
+
+/* Scroll shadow for horizontal scrollable content */
+.scroll-shadow-container {
+  position: relative;
+}
+
+.scroll-shadow-container::before,
+.scroll-shadow-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  pointer-events: none;
+  z-index: 10;
+  transition: opacity 0.3s;
+}
+
+.scroll-shadow-container::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(34, 197, 94, 0.3), transparent);
+  opacity: 0;
+}
+
+.scroll-shadow-container::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(34, 197, 94, 0.3), transparent);
+  opacity: 0;
+}
+
+.scroll-shadow-container.scrollable-left::before {
+  opacity: 1;
+}
+
+.scroll-shadow-container.scrollable-right::after {
+  opacity: 1;
+}
